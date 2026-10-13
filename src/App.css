@@ -138,3 +138,73 @@ h1 span { color: var(--blue); }
 /* Nudge only the header logo and left-side hero copy downward. */
 .site-header .brand,
 .hero-copy { transform: translateY(clamp(25px, 3.9vh, 35px)); }
+
+/* Mobile-only composition: keep the original orbit below the hero copy. */
+@media (max-width: 768px) {
+  .page-shell {
+    overflow-y: auto;
+  }
+
+  .hero { min-height: 100dvh; padding-bottom: 20px; }
+
+  .visual-stage {
+    flex: 0 0 clamp(360px, 92vw, 430px);
+    align-self: center;
+    width: calc(100% + 40px);
+    height: clamp(360px, 92vw, 430px);
+    min-height: 0;
+    margin: clamp(24px, 6vw, 40px) -20px 0;
+    transform: none;
+  }
+
+  .orbit-ring,
+  .orbit-particle { display: block; }
+
+  .orbit-system,
+  .orbit-rotator {
+    display: block;
+  }
+
+  .orbit-ring { aspect-ratio: 1; }
+  .orbit-system { --card-width: clamp(92px, 24.5vw, 110px); --orbit-squash: 1; --counter-stretch: 1; }
+  .orbit-counter {
+    transform: rotate(calc(var(--angle) * -1));
+    animation: counter-orbit 30s linear infinite;
+  }
+
+  .laptop-art {
+    position: absolute;
+    left: 50%;
+    top: var(--visual-center-y);
+    width: min(50vw, 220px);
+    transform: translate(-50%, -50%);
+  }
+
+  .service-card {
+    width: 100%;
+    min-height: 46px;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 12px;
+  }
+
+  .service-icon { flex-basis: 26px; width: 26px; height: 26px; border-radius: 9px; }
+  .service-icon svg { width: 15px; height: 15px; }
+  .service-name { font-size: clamp(8px, 2.2vw, 9px); line-height: 1.12; }
+
+  .orbit-position:nth-child(5) { --card-width: clamp(110px, 30vw, 130px); --card-height: 56px; }
+  .orbit-position:nth-child(5) .service-card { gap: 6px; padding: 6px 7px; }
+  .orbit-position:nth-child(5) .service-icon { flex-basis: 31px; width: 31px; height: 31px; border-radius: 10px; }
+  .orbit-position:nth-child(5) .service-icon svg { width: 18px; height: 18px; }
+  .orbit-position:nth-child(5) .service-name { font-size: clamp(10px, 2.7vw, 11px); line-height: 1.15; }
+}
+
+@media (max-width: 360px) {
+  .visual-stage { flex-basis: 350px; height: 350px; margin-top: 22px; }
+  .laptop-art { width: min(48vw, 190px); }
+  .service-card { width: 100%; min-height: 44px; padding: 5px; gap: 4px; }
+  .service-icon { flex-basis: 24px; width: 24px; height: 24px; }
+  .service-icon svg { width: 14px; height: 14px; }
+  .service-name { font-size: 8.8px; }
+  .orbit-position:nth-child(5) { --card-width: 114px; --card-height: 54px; }
+}
