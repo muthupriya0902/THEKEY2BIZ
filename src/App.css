@@ -101,7 +101,7 @@ h1 span { color: var(--blue); }
   .service-name { font-size: clamp(8px, 2.3vw, 10px); line-height: 1.15; }
 }
 @media (max-width: 768px) {
-  .page-shell { background-image: var(--mobile-background); background-size: cover; background-position: center 65%; background-repeat: no-repeat; }
+  .page-shell { background-image: url('/assets/key2biz-mobile-background.png'); background-size: cover; background-position: center center; background-repeat: no-repeat; }
 }
 @media (max-width: 380px), (max-height: 650px) and (max-width: 800px) {
   .site-header { height: 60px; }

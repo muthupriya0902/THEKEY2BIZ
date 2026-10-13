@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, ChartNoAxesColumnIncreasing, Mail, Megaphone, Monitor, Search, Smartphone, X } from 'lucide-react';
 import desktopBackground from './assets/key2biz-background.png';
-import mobileBackground from './assets/key2biz-mobile-background.png';
 import './App.css';
+
+const mobileBackground = '/assets/key2biz-mobile-background.png';
 
 const services = [
   { name: 'Application Development', Icon: Smartphone, theme: 'blue', angle: -90 },
