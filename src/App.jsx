@@ -4,13 +4,6 @@ import desktopBackground from './assets/key2biz-background.png';
 import mobileBackground from './assets/key2biz-mobile-background.png';
 import './App.css';
 
-// Add profile URLs here when they are ready. Empty values intentionally render as disabled links.
-const socialLinks = {
-  instagram: '',
-  telegram: '',
-  youtube: '',
-};
-
 const services = [
   { name: 'Application Development', Icon: Smartphone, theme: 'blue', angle: -90 },
   { name: 'Website Development', Icon: Monitor, theme: 'purple', angle: -18 },
@@ -20,9 +13,10 @@ const services = [
 ];
 
 const socialItems = [
-  { key: 'instagram', label: 'Instagram', src: '/assets/instagram-logo.png' },
-  { key: 'telegram', label: 'Telegram', src: '/assets/telegram-logo.png' },
-  { key: 'youtube', label: 'YouTube', src: '/assets/youtube-logo.png' },
+  { key: 'instagram-main', label: 'Instagram – TheKey2Biz', src: '/assets/instagram-logo1.png', href: 'https://www.instagram.com/thekey2biz?stkn=MTFsaXo5cmE5eW1q' },
+  { key: 'instagram-official', label: 'Instagram – TheKey2Biz Official', src: '/assets/instagram-logo2.png', href: 'https://instagram.com/thekey2biz.official?rpxt=MXgxZjk1bzR0N21vcw%3D%3D' },
+  { key: 'youtube', label: 'YouTube – TheKey2Biz', src: '/assets/youtube-logo.png', href: 'https://youtube.com/@thekey2biz?si=dNJSSIQCX4Xcv39S' },
+  { key: 'telegram', label: 'Telegram – TheKey2Biz', src: '/assets/telegram-logo.png', href: 'https://t.me/thekey2bizz' },
 ];
 
 const logoImageSrc = '/assets/key2biz-logo.png';
@@ -44,20 +38,16 @@ function SocialPopup({ open, onClose, popupRef }) {
   if (!open) return null;
   return (
     <div className="social-popup" id="social-links-popup" ref={popupRef} role="dialog" aria-label="Connect with Key2Biz">
-      <div className="popup-heading"><span>Let’s connect</span><button className="popup-close" onClick={onClose} aria-label="Close social links"><X size={16} /></button></div>
+      <button className="popup-close" onClick={onClose} aria-label="Close social links"><X size={16} /></button>
       <div className="social-list">
         {socialItems.map((item) => {
-          const href = socialLinks[item.key];
           return (
-            <a key={item.key} className={`social-link ${href ? '' : 'is-disabled'}`} href={href || undefined}
-              target={href ? '_blank' : undefined} rel={href ? 'noreferrer' : undefined}
-              aria-label={href ? `Visit Key2Biz on ${item.label}` : `${item.label} profile link not configured`}
-              aria-disabled={!href} title={href ? item.label : `${item.label} URL not configured`}
-              onClick={!href ? (event) => event.preventDefault() : undefined}>
-              <span className={`social-icon social-${item.key}`}>
+            <a key={item.key} className="social-link" href={item.href}
+              target="_blank" rel="noopener noreferrer"
+              aria-label={item.label}>
+              <span className="social-icon">
                 <img src={item.src} alt="" />
               </span>
-              <span>{item.label}</span>
             </a>
           );
         })}
