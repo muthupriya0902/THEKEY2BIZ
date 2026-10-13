@@ -23,13 +23,9 @@ const logoImageSrc = '/assets/key2biz-logo.png';
 const laptopImageSrc = '/assets/laptop.png';
 
 function Logo() {
-  const [imageMissing, setImageMissing] = useState(false);
   return (
     <a className="brand" href="#top" aria-label="Key2Biz home">
-      {!imageMissing && logoImageSrc && (
-        <img className="brand-image" src={logoImageSrc} alt="Key2Biz Logo" onError={() => setImageMissing(true)} />
-      )}
-      {(imageMissing || !logoImageSrc) && <span className="brand-placeholder"><span className="brand-mark">K</span><span>Key2Biz</span></span>}
+      <img className="brand-image" src={logoImageSrc} alt="Key2Biz Logo" />
     </a>
   );
 }
